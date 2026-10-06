@@ -18,7 +18,8 @@ npm run preview  # serve the build
 
 Pushing to `main` builds and publishes to GitHub Pages (`.github/workflows/deploy.yml`).
 In the repository settings set **Pages → Source → GitHub Actions**.
-The base path is the `VITE_BASE` build variable: `/EuropianUnion/` on GitHub Pages, `/` on a custom domain.
+The site is served at https://projekt-56.barabashflow.pl (custom domain), so the workflow builds with `VITE_BASE: /`.
+Without a custom domain it would be `/EuropianUnion/`.
 
 ## Structure
 

@@ -26,8 +26,9 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          # '/EuropianUnion/' while the site lives at <user>.github.io/EuropianUnion; set to '/' for a custom domain.
-          VITE_BASE: /EuropianUnion/
+          # The site is served from the root of the custom domain projekt-56.barabashflow.pl.
+          # Without a custom domain (<user>.github.io/EuropianUnion) this would be '/EuropianUnion/'.
+          VITE_BASE: /
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
