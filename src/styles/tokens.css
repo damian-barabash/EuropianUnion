@@ -1,0 +1,31 @@
+/* Design tokens. Placeholder palette and type until the project's visual identity arrives:
+   change the values here and the whole site follows. No rounded corners anywhere by design. */
+:root {
+  --ink: #0b0c10;
+  --muted: #5a5f6d;
+  --navy: #14183a;
+  --blue: #0a3ca8;
+  --blue-dark: #082e83;
+  --sky: #e6eefc;
+  --grey: #f6f6f7;
+  --line: #d7dae2;
+  --white: #fff;
+
+  --font: 'Onest Variable', 'Onest', system-ui, sans-serif;
+
+  --fs-h1: clamp(2.25rem, 1.45rem + 2.9vw, 3.5rem);
+  --fs-h2: clamp(1.9rem, 1.35rem + 2vw, 2.9rem);
+  --fs-h3: 1.3125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.9375rem;
+
+  --container: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section: clamp(4rem, 8.5vw, 7.5rem);
+  /* Left/right offset that lines full-bleed blocks up with the container. */
+  --edge: max(var(--gutter), calc((100vw - var(--container)) / 2));
+
+  --z-header: 30;
+  --z-nav: 40;
+  --z-cookie: 50;
+}
