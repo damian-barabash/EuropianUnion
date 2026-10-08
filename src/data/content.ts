@@ -19,26 +19,26 @@ export type Person = { name: string; role: string; org: string; image: string; q
 const ex = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 
 export const posts: Post[] = [
-  { slug: 'lorem-ipsum-dolor-sit-amet', title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', date: '2026-10-02', category: 'News', image: 'conference-screen.webp', excerpt: ex },
-  { slug: 'sed-do-eiusmod-tempor', title: 'Sed do eiusmod tempor incididunt ut labore et dolore', date: '2026-09-18', category: 'Press release', image: 'group-discussion.webp', excerpt: ex },
-  { slug: 'ut-enim-ad-minim-veniam', title: 'Ut enim ad minim veniam, quis nostrud exercitation', date: '2026-09-04', category: 'News', image: 'meeting-laptop.webp', excerpt: ex },
-  { slug: 'duis-aute-irure-dolor', title: 'Duis aute irure dolor in reprehenderit in voluptate', date: '2026-08-21', category: 'Article', image: 'lab-glass.webp', excerpt: ex },
-  { slug: 'excepteur-sint-occaecat', title: 'Excepteur sint occaecat cupidatat non proident', date: '2026-07-30', category: 'News', image: 'startup-pitch.webp', excerpt: ex },
-  { slug: 'nemo-enim-ipsam-voluptatem', title: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur', date: '2026-07-09', category: 'Article', image: 'students-library.webp', excerpt: ex },
-  { slug: 'neque-porro-quisquam-est', title: 'Neque porro quisquam est qui dolorem ipsum', date: '2026-06-15', category: 'Press release', image: 'old-town.webp', excerpt: ex },
+  { slug: 'lorem-ipsum-dolor-sit-amet', title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', date: '2026-10-02', category: 'News', image: 'lab-pipette.webp', excerpt: ex },
+  { slug: 'sed-do-eiusmod-tempor', title: 'Sed do eiusmod tempor incididunt ut labore et dolore', date: '2026-09-18', category: 'Press release', image: 'conference-audience.webp', excerpt: ex },
+  { slug: 'ut-enim-ad-minim-veniam', title: 'Ut enim ad minim veniam, quis nostrud exercitation', date: '2026-09-04', category: 'News', image: 'microscope.webp', excerpt: ex },
+  { slug: 'duis-aute-irure-dolor', title: 'Duis aute irure dolor in reprehenderit in voluptate', date: '2026-08-21', category: 'Article', image: 'lab-tubes.webp', excerpt: ex },
+  { slug: 'excepteur-sint-occaecat', title: 'Excepteur sint occaecat cupidatat non proident', date: '2026-07-30', category: 'News', image: 'lab-meeting.webp', excerpt: ex },
+  { slug: 'nemo-enim-ipsam-voluptatem', title: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur', date: '2026-07-09', category: 'Article', image: 'molecule.webp', excerpt: ex },
+  { slug: 'neque-porro-quisquam-est', title: 'Neque porro quisquam est qui dolorem ipsum', date: '2026-06-15', category: 'Press release', image: 'well-plate.webp', excerpt: ex },
 ]
 
 export const events: EventItem[] = [
-  { slug: 'info-day-open-call-1', title: 'Info day: lorem ipsum dolor sit amet', date: '2026-10-21', time: '10:00–12:00 CET', place: 'Online', format: 'Online', image: 'microphone.webp', excerpt: ex, registerUrl: '#', openCall: true },
-  { slug: 'consortium-conference-2026', title: 'Annual conference: consectetur adipiscing elit', date: '2026-11-12', endDate: '2026-11-13', time: '09:00–17:00 CET', place: 'Ipsum City, Lorem Congress Centre', format: 'Hybrid', image: 'audience.webp', excerpt: ex, registerUrl: '#' },
-  { slug: 'workshop-sed-do-eiusmod', title: 'Workshop: sed do eiusmod tempor incididunt', date: '2026-12-03', time: '13:00–16:00 CET', place: 'Dolor Town, Amet University', format: 'On-site', image: 'classroom.webp', excerpt: ex, registerUrl: '#' },
-  { slug: 'kick-off-meeting', title: 'Kick-off meeting of the consortium', date: '2026-05-14', time: '09:30–16:00 CET', place: 'Ipsum City', format: 'On-site', image: 'team-table.webp', excerpt: ex },
+  { slug: 'info-day-open-call-1', title: 'Info day: lorem ipsum dolor sit amet', date: '2026-10-21', time: '10:00–12:00 CET', place: 'Online', format: 'Online', image: 'conference-blue.webp', excerpt: ex, registerUrl: '#', openCall: true },
+  { slug: 'consortium-conference-2026', title: 'Annual conference: consectetur adipiscing elit', date: '2026-11-12', endDate: '2026-11-13', time: '09:00–17:00 CET', place: 'Ipsum City, Lorem Congress Centre', format: 'Hybrid', image: 'conference-audience.webp', excerpt: ex, registerUrl: '#' },
+  { slug: 'workshop-sed-do-eiusmod', title: 'Workshop: sed do eiusmod tempor incididunt', date: '2026-12-03', time: '13:00–16:00 CET', place: 'Dolor Town, Amet University', format: 'On-site', image: 'lab-workshop.webp', excerpt: ex, registerUrl: '#' },
+  { slug: 'kick-off-meeting', title: 'Kick-off meeting of the consortium', date: '2026-05-14', time: '09:30–16:00 CET', place: 'Ipsum City', format: 'On-site', image: 'lab-team-tablet.webp', excerpt: ex },
 ]
 
 export const calls: OpenCall[] = [
-  { slug: 'open-call-1', title: 'Open Call 1: lorem ipsum dolor sit amet', status: 'open', opens: '2026-09-15', deadline: '2026-11-30', budget: '€000,000', grant: 'up to €00,000 per project', image: 'coding-pair.webp', summary: ex, applyUrl: 'https://example.eu/apply' },
-  { slug: 'open-call-2', title: 'Open Call 2: consectetur adipiscing elit', status: 'upcoming', opens: '2027-03-01', deadline: '2027-05-15', budget: '€000,000', grant: 'up to €00,000 per project', image: 'engineer-lab.webp', summary: ex, applyUrl: 'https://example.eu/apply' },
-  { slug: 'pilot-call', title: 'Pilot Call: sed do eiusmod tempor', status: 'closed', opens: '2026-04-01', deadline: '2026-06-01', budget: '€000,000', grant: 'up to €00,000 per project', image: 'desk-analysis.webp', summary: ex, applyUrl: 'https://example.eu/apply' },
+  { slug: 'open-call-1', title: 'Open Call 1: lorem ipsum dolor sit amet', status: 'open', opens: '2026-09-15', deadline: '2026-11-30', budget: '€000,000', grant: 'up to €00,000 per project', image: 'lab-microscope-work.webp', summary: ex, applyUrl: 'https://example.eu/apply' },
+  { slug: 'open-call-2', title: 'Open Call 2: consectetur adipiscing elit', status: 'upcoming', opens: '2027-03-01', deadline: '2027-05-15', budget: '€000,000', grant: 'up to €00,000 per project', image: 'lab-microscope-sample.webp', summary: ex, applyUrl: 'https://example.eu/apply' },
+  { slug: 'pilot-call', title: 'Pilot Call: sed do eiusmod tempor', status: 'closed', opens: '2026-04-01', deadline: '2026-06-01', budget: '€000,000', grant: 'up to €00,000 per project', image: 'lab-laptop.webp', summary: ex, applyUrl: 'https://example.eu/apply' },
 ]
 
 export const callSteps = [

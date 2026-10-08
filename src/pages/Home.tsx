@@ -54,7 +54,7 @@ export default function Home() {
 
       <section className="bleed">
         <div className="bleed__media">
-          <img src={img('team-table.webp')} alt="Consortium members at a working meeting" loading="lazy" width={900} height={700} />
+          <img src={img('lab-team-bench.webp')} alt="Researchers working together at a laboratory bench" loading="lazy" width={900} height={700} />
         </div>
         <div className="bleed__panel bleed__panel--tint">
           <div data-reveal>
@@ -83,7 +83,7 @@ export default function Home() {
 
       <section className="bleed bleed--flip">
         <div className="bleed__media">
-          <img src={img('coding-pair.webp')} alt="Two people working on the platform" loading="lazy" width={900} height={700} />
+          <img src={img('lab-computers.webp')} alt="Two researchers working at computers in a laboratory" loading="lazy" width={900} height={700} />
         </div>
         <div className="bleed__panel bleed__panel--tint">
           <div data-reveal>

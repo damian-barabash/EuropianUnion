@@ -39,7 +39,7 @@ export default function About() {
 
       <section className="section">
         <div className="container media">
-          <img className="media__img" src={img('team-table.webp')} alt="Consortium members at a working meeting" width={700} height={500} loading="lazy" data-reveal />
+          <img className="media__img" src={img('lab-team-bench.webp')} alt="Researchers working together at a laboratory bench" width={700} height={500} loading="lazy" data-reveal />
           <div data-reveal>
             <h2>We are {site.name}</h2>
             <p>{lorem.p1}</p>
@@ -91,7 +91,7 @@ export default function About() {
               ))}
             </ul>
           </div>
-          <img className="media__img" src={img('students-library.webp')} alt="Researchers discussing results" width={700} height={500} loading="lazy" data-reveal />
+          <img className="media__img" src={img('lab-team-tablet.webp')} alt="Three researchers discussing results on a tablet" width={700} height={500} loading="lazy" data-reveal />
         </div>
       </section>
 
@@ -99,7 +99,7 @@ export default function About() {
         <div className="container">
           <SectionHead title="Introduction video" />
           <div className="video" data-reveal>
-            <img src={img('audience.webp')} alt="" loading="lazy" />
+            <img src={img('conference-audience.webp')} alt="" loading="lazy" />
             <button className="video__play" aria-label="Play the introduction video (placeholder)">
               <Icon name="play" size={34} />
             </button>

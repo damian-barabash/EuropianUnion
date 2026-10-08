@@ -35,7 +35,7 @@ export default function Resources() {
             {videos.map((v, i) => (
               <figure className="videocard" key={v.id} data-reveal>
                 <div className="video">
-                  <img src={img(i % 2 ? 'microphone.webp' : 'conference-screen.webp')} alt="" loading="lazy" />
+                  <img src={img(i % 2 ? 'conference-blue.webp' : 'conference-audience.webp')} alt="" loading="lazy" />
                   <button className="video__play" aria-label={`Play: ${v.title} (placeholder)`}>
                     <Icon name="play" size={30} />
                   </button>

@@ -33,7 +33,7 @@ export default function Platform() {
 
       <section className="section">
         <div className="container media">
-          <img className="media__img" src={img('coding-pair.webp')} alt="Two people working on the platform" width={700} height={500} loading="lazy" data-reveal />
+          <img className="media__img" src={img('lab-computers.webp')} alt="Two researchers working at computers in a laboratory" width={700} height={500} loading="lazy" data-reveal />
           <div data-reveal>
             <h2>What the platform will be</h2>
             <p>{lorem.p1}</p>
