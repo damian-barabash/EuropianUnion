@@ -3,7 +3,7 @@ import { CtaBand, PageHero, SectionHead } from '../components/Blocks'
 import { EuEmblem } from '../components/Brand'
 import { Icon } from '../components/Icon'
 import { team, timeline, workPackages } from '../data/content'
-import { facts, lorem, pillars, site } from '../data/site'
+import { facts, intro, lorem, pillars, site } from '../data/site'
 import { img } from '../lib/format'
 
 function Team() {
@@ -50,7 +50,7 @@ export default function About() {
 
       <section className="section section--grey">
         <div className="container">
-          <SectionHead title="Objectives" text="What the project wants to achieve by its end." />
+          <SectionHead title={intro.pillarsTitle} />
           <ul className="columns">
             {pillars.map((p) => (
               <li key={p.title} data-reveal>
@@ -120,7 +120,7 @@ export default function About() {
           <div>
             <h2>Funding</h2>
             <p>
-              {site.name} is co-funded by the European Union. {lorem.p2}
+              {site.name} is {site.euLabel.toLowerCase()} the European Union. {lorem.p2}
             </p>
             <dl className="facts facts--plain">
               {facts.map((f) => (

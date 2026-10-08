@@ -3,7 +3,7 @@
 Website of an EU co-funded project. This repository holds the **React reference version**: the structure,
 design and behaviour are polished here first, then rebuilt as a WordPress theme for the final delivery.
 
-Everything is a placeholder for now: the project name ("Atria"), the logo, all texts (lorem ipsum) and photos (Unsplash).
+The project is **TransBioNet**. Home page texts, partners and their logos are real; the project logo is a working version, inner pages still carry placeholder texts (lorem ipsum) and photos (Unsplash).
 
 ## Run
 

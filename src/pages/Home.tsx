@@ -1,32 +1,42 @@
 import { Link } from 'react-router-dom'
 import { ContactBlock, SectionHead } from '../components/Blocks'
 import { CallRow, EventRow, PostCard } from '../components/Cards'
+import { Icon } from '../components/Icon'
 import { PartnerLogo } from '../components/PartnerLogo'
 import { calls, events, partners, posts } from '../data/content'
-import { facts, lorem, pillars, site } from '../data/site'
+import { facts, intro, lorem, pillars, site } from '../data/site'
 import { img, isPast } from '../lib/format'
+
+// `false` puts the whole photograph in the hero instead of the cut-out figures.
+const HERO_CUTOUT = false
 
 export default function Home() {
   const upcoming = events.filter((e) => !isPast(e.date)).slice(0, 3)
+  const countries = new Set(partners.map((p) => p.country)).size
 
   return (
     <>
       <section className="hero">
         <div className="hero__text">
-          <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
-          <p>{lorem.short}</p>
+          <h1>{intro.hero.title}</h1>
+          <p>{intro.hero.text}</p>
           <div className="hero__actions">
-            <Link to="/open-calls" className="btn btn--primary">
-              See Open Calls
-            </Link>
-            <Link to="/about" className="btn btn--outline">
-              About the project
+            <Link to="/about" className="btn btn--primary">
+              Discover more
             </Link>
           </div>
         </div>
-        <div className="hero__media">
-          <img src={img('hero-workshop.webp')} alt="Project team during a workshop" width={900} height={700} fetchPriority="high" />
-        </div>
+        {HERO_CUTOUT ? (
+          <div className="hero__media hero__media--cutout">
+            <div className="hero__art">
+              <img src={img('hero-lab-cutout.webp')} alt="Three researchers in a laboratory discussing a molecular model on a screen" width={1536} height={1024} fetchPriority="high" />
+            </div>
+          </div>
+        ) : (
+          <div className="hero__media">
+            <img src={img('hero-lab.webp')} alt="Three researchers in a laboratory discussing a molecular model on a screen" width={1536} height={1024} fetchPriority="high" />
+          </div>
+        )}
       </section>
 
       <section className="factsband">
@@ -48,8 +58,8 @@ export default function Home() {
         </div>
         <div className="bleed__panel bleed__panel--tint">
           <div data-reveal>
-            <h2>What {site.name} does</h2>
-            <p>{lorem.p1}</p>
+            <h2>{intro.support.title}</h2>
+            <p>{intro.support.text}</p>
             <Link className="btn btn--outline" to="/about">
               More about the project
             </Link>
@@ -59,6 +69,7 @@ export default function Home() {
 
       <section className="section">
         <div className="container">
+          <SectionHead title={intro.pillarsTitle} />
           <ul className="columns">
             {pillars.map((p) => (
               <li key={p.title} data-reveal>
@@ -67,56 +78,6 @@ export default function Home() {
               </li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      <section className="section section--grey">
-        <div className="container">
-          <SectionHead title="Open Calls" text="Funding opportunities for organisations that want to work with the project." action={{ label: 'All Open Calls', to: '/open-calls' }} />
-          <div className="callrows">
-            {calls.map((c) => (
-              <CallRow key={c.slug} call={c} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <SectionHead title="News" />
-          <div className="grid grid--3">
-            {posts.slice(0, 3).map((p) => (
-              <PostCard key={p.slug} post={p} />
-            ))}
-          </div>
-          <div className="more">
-            <Link to="/news" className="btn btn--primary">
-              Read all news
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section--dark">
-        <div className="container darkgrid">
-          <div className="darkgrid__head" data-reveal>
-            <h2>Upcoming events</h2>
-            <p>Info days, workshops and conferences organised by the project or with its participation.</p>
-            <Link to="/events" className="btn btn--outline-light">
-              All events
-            </Link>
-          </div>
-          {upcoming.length ? (
-            <div className="events">
-              {upcoming.map((e) => (
-                <EventRow key={e.slug} event={e} />
-              ))}
-            </div>
-          ) : (
-            <p className="empty">
-              No upcoming events right now. See <Link to="/events">past events</Link>.
-            </p>
-          )}
         </div>
       </section>
 
@@ -135,9 +96,58 @@ export default function Home() {
         </div>
       </section>
 
+      {site.showOpenCalls && (
+        <section className="section section--grey">
+          <div className="container">
+            <SectionHead title="Open Calls" text="Funding opportunities for organisations that want to work with the project." action={{ label: 'All Open Calls', to: '/open-calls' }} />
+            <div className="callrows">
+              {calls.map((c) => (
+                <CallRow key={c.slug} call={c} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="section">
         <div className="container">
-          <SectionHead title="Partners" text={`${partners.length} organisations from across Europe work together in the consortium.`} action={{ label: 'All partners', to: '/partners' }} />
+          <SectionHead title="News" />
+          <div className="grid grid--3">
+            {posts.slice(0, 3).map((p) => (
+              <PostCard key={p.slug} post={p} />
+            ))}
+          </div>
+          <div className="more">
+            <Link to="/news" className="btn btn--primary">
+              Read all news
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* The whole block disappears when there are no upcoming events. */}
+      {upcoming.length > 0 && (
+        <section className="section section--dark">
+          <div className="container darkgrid">
+            <div className="darkgrid__head" data-reveal>
+              <h2>Upcoming events</h2>
+              <p>Info days, workshops and conferences organised by the project or with its participation.</p>
+              <Link to="/events" className="btn btn--outline-light">
+                All events
+              </Link>
+            </div>
+            <div className="events">
+              {upcoming.map((e) => (
+                <EventRow key={e.slug} event={e} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="section">
+        <div className="container">
+          <SectionHead title="Partners" text={`${partners.length} organisations from ${countries} countries work together in the consortium.`} />
           <ul className="logos" data-reveal>
             {partners.map((p) => (
               <li key={p.slug}>
@@ -146,6 +156,12 @@ export default function Home() {
                 </Link>
               </li>
             ))}
+            <li className="logos__all">
+              <Link to="/partners">
+                <span>Meet the consortium</span>
+                <Icon name="arrow" />
+              </Link>
+            </li>
           </ul>
         </div>
       </section>

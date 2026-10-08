@@ -32,7 +32,7 @@
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: min(680px, 78vh);
+  min-height: min(620px, 78vh);
   background: var(--grey);
 }
 
@@ -68,7 +68,40 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Keeps the pointing hand and the screen in frame when the sides are cropped. */
+  object-position: 68% center;
   animation: settle 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Cut-out variant: the figures stand in front of a blue panel and rise above its top edge. */
+.hero__media--cutout {
+  display: grid;
+  align-items: end;
+  justify-items: end;
+  padding-top: 2rem;
+}
+
+.hero__art {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 3 / 2;
+}
+
+.hero__art::before {
+  content: '';
+  position: absolute;
+  inset: 27% 0 0;
+  background:
+    linear-gradient(115deg, transparent 0 46%, rgb(255 255 255 / 5%) 46% 64%, transparent 64% 76%, rgb(255 255 255 / 9%) 76% 100%),
+    linear-gradient(115deg, var(--blue) 0%, #0c2f8a 45%, var(--navy) 100%);
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero__art img {
+  object-fit: contain;
+  object-position: right bottom;
+  animation-name: rise;
 }
 
 @keyframes rise {
@@ -97,6 +130,12 @@
 
   .hero__media {
     aspect-ratio: 4 / 3;
+  }
+
+  .hero__media--cutout {
+    aspect-ratio: auto;
+    min-height: 0;
+    padding-top: 0;
   }
 }
 

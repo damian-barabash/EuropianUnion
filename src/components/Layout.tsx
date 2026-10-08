@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { footerMenu, legalMenu, mainMenu, site } from '../data/site'
+import { footerMenu, legalMenu, mainMenu, site, visibleMenu, type MenuItem } from '../data/site'
 import { useReveal } from '../lib/useReveal'
 import { EuEmblem, Logo } from './Brand'
 import { Icon } from './Icon'
 
 function Announcement() {
   const a = site.announcement
-  if (!a.text) return null
+  if (!a.text || !site.showOpenCalls) return null
   return (
     <div className="announce">
       <div className="container announce__in">
@@ -47,7 +47,7 @@ function Header() {
 
         <nav id="main-nav" className={`nav${open ? ' is-open' : ''}`} aria-label="Main">
           <ul className="nav__list">
-            {mainMenu.map((item) => (
+            {visibleMenu(mainMenu).map((item) => (
               <li key={item.label} className={item.children ? 'nav__item nav__item--parent' : 'nav__item'}>
                 <NavLink to={item.to} className="nav__link">
                   {item.label}
@@ -73,61 +73,43 @@ function Header() {
   )
 }
 
+function FooterLink({ item }: { item: MenuItem }) {
+  return item.href ? (
+    <a href={item.href} target="_blank" rel="noopener noreferrer">
+      {item.label}
+    </a>
+  ) : (
+    <Link to={item.to}>{item.label}</Link>
+  )
+}
+
 function Footer() {
   return (
     <footer className="footer">
       <div className="container footer__top">
         <div className="footer__brand">
-          <Logo light />
-          <p>{site.tagline}. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <ul className="footer__social">
-            {site.social.map((s) => (
-              <li key={s.label}>
-                <a href={s.href}>{s.label}</a>
-              </li>
-            ))}
-          </ul>
+          <div className="footer__logos">
+            <Logo light />
+            <span className="footer__sep" aria-hidden="true" />
+            <EuEmblem light />
+          </div>
+          <p>{site.disclaimer}</p>
         </div>
         <nav aria-label="Footer">
-          <h2 className="footer__h">Explore</h2>
           <ul className="footer__menu">
-            {footerMenu.map((m) => (
-              <li key={m.to}>
-                <Link to={m.to}>{m.label}</Link>
+            {[...visibleMenu(footerMenu), ...legalMenu].map((m) => (
+              <li key={m.label}>
+                <FooterLink item={m} />
               </li>
             ))}
           </ul>
         </nav>
-        <div>
-          <h2 className="footer__h">Contact</h2>
-          <address className="footer__contact">
-            <a href={`mailto:${site.email}`}>{site.email}</a>
-            <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>
-            <span>{site.address}</span>
-          </address>
-        </div>
-      </div>
-
-      <div className="container">
-        <div className="footer__eu">
-          <EuEmblem light />
-          <p>
-            {site.disclaimer} <span className="footer__grant">{site.grant}</span>
-          </p>
-        </div>
       </div>
 
       <div className="container footer__bottom">
         <span>
-          © {new Date().getFullYear()} {site.name}
+          Copyright {new Date().getFullYear()} | {site.name}
         </span>
-        <ul>
-          {legalMenu.map((m) => (
-            <li key={m.to}>
-              <Link to={m.to}>{m.label}</Link>
-            </li>
-          ))}
-        </ul>
       </div>
     </footer>
   )

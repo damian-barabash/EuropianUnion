@@ -1,15 +1,17 @@
 import { Link, useParams } from 'react-router-dom'
 import { Accordion, PageHero, SectionHead } from '../components/Blocks'
-import { CallRow, ResourceRow, StatusBadge } from '../components/Cards'
+import { CallRow, EventRow, ResourceRow, StatusBadge } from '../components/Cards'
 import { Icon } from '../components/Icon'
-import { callFaq, callSteps, calls, resources } from '../data/content'
+import { callFaq, callSteps, calls, events, resources } from '../data/content'
 import { lorem } from '../data/site'
-import { formatDate, img } from '../lib/format'
+import { formatDate, img, isPast } from '../lib/format'
 import NotFound from './NotFound'
 
 export function CallsPage() {
   const current = calls.filter((c) => c.status !== 'closed')
   const closed = calls.filter((c) => c.status === 'closed')
+  // Webinars and info sessions about the calls: events marked `openCall` in the content.
+  const webinars = events.filter((e) => e.openCall && !isPast(e.date))
   return (
     <>
       <PageHero title="Open Calls" lead="Funding opportunities published by the project. Each call has its own rules, deadline and documents." crumbs={[{ label: 'Open Calls' }]} />
@@ -24,6 +26,22 @@ export function CallsPage() {
           </div>
         </div>
       </section>
+
+      {webinars.length > 0 && (
+        <section className="section section--dark">
+          <div className="container darkgrid">
+            <div className="darkgrid__head" data-reveal>
+              <h2>Webinars and info sessions</h2>
+              <p>Online meetings that explain the rules of the calls and answer applicants’ questions.</p>
+            </div>
+            <div className="events">
+              {webinars.map((e) => (
+                <EventRow key={e.slug} event={e} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="section section--grey">
         <div className="container">

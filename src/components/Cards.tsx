@@ -134,7 +134,7 @@ export function PartnerCard({ partner }: { partner: Partner }) {
           <Link to={`/partners/${partner.slug}`}>{partner.name}</Link>
         </h3>
         <p className="partner__meta">
-          {partner.country}, {partner.type.toLowerCase()}
+          {partner.country} · {partner.type}
         </p>
         {partner.role !== 'Partner' && <span className="partner__role">{partner.role}</span>}
       </div>

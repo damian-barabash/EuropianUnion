@@ -1,33 +1,23 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Filter, PageHero, SectionHead } from '../components/Blocks'
+import { PageHero, SectionHead } from '../components/Blocks'
 import { PostCard } from '../components/Cards'
 import { posts } from '../data/content'
 import { lorem } from '../data/site'
 import { formatDate, img } from '../lib/format'
 import NotFound from './NotFound'
 
-const cats = ['All', 'News', 'Press release', 'Article'] as const
-const PAGE = 6
+// The archive has no cut-off: "Load more" keeps adding older posts until the first one.
+const PAGE = 9
 
 export function NewsPage() {
-  const [cat, setCat] = useState<(typeof cats)[number]>('All')
   const [shown, setShown] = useState(PAGE)
-  const list = posts.filter((p) => cat === 'All' || p.category === cat)
+  const list = [...posts].sort((a, b) => b.date.localeCompare(a.date))
   return (
     <>
-      <PageHero title="News" lead="Updates, press releases and articles from the project and its partners." crumbs={[{ label: 'News' }]} />
+      <PageHero title="News" lead="Updates from the project and its partners." crumbs={[{ label: 'News' }]} />
       <section className="section">
         <div className="container">
-          <Filter
-            label="Filter news by category"
-            options={cats}
-            value={cat}
-            onChange={(c) => {
-              setCat(c)
-              setShown(PAGE)
-            }}
-          />
           <div className="grid grid--3">
             {list.slice(0, shown).map((p) => (
               <PostCard key={p.slug} post={p} />
@@ -36,7 +26,7 @@ export function NewsPage() {
           {list.length > shown && (
             <div className="more">
               <button className="btn btn--outline" onClick={() => setShown(shown + PAGE)}>
-                Load more news
+                Load older news
               </button>
             </div>
           )}

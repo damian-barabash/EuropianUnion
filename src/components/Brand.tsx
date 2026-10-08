@@ -1,15 +1,21 @@
 import { site } from '../data/site'
 
-// Placeholder project logo. The final logo comes from the project's graphic designer.
+// Working project logo: a rising chain of linked nodes (research moving towards investment)
+// and the name. To be replaced if the project receives a designed logo.
 export function Logo({ light = false }: { light?: boolean }) {
   return (
     <span className={`logo${light ? ' logo--light' : ''}`}>
       <svg className="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
         <rect width="40" height="40" className="logo__tile" />
-        <path d="M20 8 31 31h-5.2l-2-4.6h-7.6l-2 4.6H9L20 8Zm0 9.6-2.3 5.2h4.6L20 17.6Z" className="logo__glyph" />
-        <circle cx="20" cy="33.5" r="2.2" className="logo__dot" />
+        <path d="M9.5 28.5 17 18l7.5 5.5L31 11" className="logo__link" />
+        <circle cx="9.5" cy="28.5" r="3" className="logo__glyph" />
+        <circle cx="17" cy="18" r="3" className="logo__glyph" />
+        <circle cx="24.5" cy="23.5" r="3" className="logo__glyph" />
+        <circle cx="31" cy="11" r="3.6" className="logo__dot" />
       </svg>
-      <span className="logo__word">{site.name}</span>
+      <span className="logo__word">
+        Trans<b>Bio</b>Net
+      </span>
     </span>
   )
 }
@@ -46,7 +52,7 @@ export function EuEmblem({ light = false, stacked = false }: { light?: boolean; 
     <span className={`eu${light ? ' eu--light' : ''}${stacked ? ' eu--stacked' : ''}`}>
       <EuFlag />
       <span className="eu__text">
-        Co-funded by
+        {site.euLabel}
         <br />
         the European Union
       </span>

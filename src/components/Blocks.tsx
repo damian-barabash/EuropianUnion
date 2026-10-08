@@ -1,6 +1,6 @@
 import { useId, useState, type FormEvent, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { site } from '../data/site'
+import { intro, site } from '../data/site'
 import { Icon } from './Icon'
 
 export function Breadcrumbs({ items }: { items: { label: string; to?: string }[] }) {
@@ -127,15 +127,15 @@ export function ContactForm() {
             <option value="" disabled>
               Choose one
             </option>
-            {['Start-up', 'SME', 'Large company', 'University or research centre', 'Public body', 'Investor', 'Other'].map((o) => (
+            {['Start-up', 'SME', 'Large company', 'University or research centre', 'Innovation support organisation', 'Research infrastructure or service provider', 'Public body', 'Investor', 'Other'].map((o) => (
               <option key={o}>{o}</option>
             ))}
           </select>
         </label>
         <label>
           Topic
-          <select name="topic" defaultValue="General question">
-            {['General question', 'Open Calls', 'Partnership', 'Media', 'Digital Platform'].map((o) => (
+          <select name="topic" defaultValue="General enquiry">
+            {['General enquiry', 'Open calls', 'Collaboration', 'Training and community', 'Digital platform and tools', 'Media enquiry'].map((o) => (
               <option key={o}>{o}</option>
             ))}
           </select>
@@ -148,12 +148,16 @@ export function ContactForm() {
       <label className="form__check">
         <input type="checkbox" name="privacy" required />
         <span>
-          I have read the <Link to="/privacy-policy">privacy policy</Link> and agree to the processing of my data to answer this message.
+          I have read the{' '}
+          <a href={site.privacyUrl} target="_blank" rel="noopener noreferrer">
+            privacy notice
+          </a>{' '}
+          and agree to the processing of my data to answer this message.
         </span>
       </label>
       <label className="form__check">
         <input type="checkbox" name="newsletter" />
-        <span>I would like to receive news about {site.name}.</span>
+        <span>I would like to receive news and updates about {site.name}.</span>
       </label>
       <button className="btn btn--primary" type="submit">
         Send message
@@ -168,11 +172,8 @@ export function ContactBlock() {
     <section className="talk">
       <div className="container talk__in">
         <div className="talk__text" data-reveal>
-          <h2>Let’s talk about the project</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p>
-            Write to us at <a href={`mailto:${site.email}`}>{site.email}</a> or use the form.
-          </p>
+          <h2>{intro.talk.title}</h2>
+          <p>{intro.talk.text}</p>
         </div>
         <div className="talk__form" data-reveal>
           <ContactForm />
@@ -194,9 +195,11 @@ export function CtaBand() {
           <Link to="/contact" className="btn btn--light">
             Contact us
           </Link>
-          <Link to="/open-calls" className="btn btn--outline-light">
-            See Open Calls
-          </Link>
+          {site.showOpenCalls && (
+            <Link to="/open-calls" className="btn btn--outline-light">
+              See Open Calls
+            </Link>
+          )}
         </div>
       </div>
     </section>
