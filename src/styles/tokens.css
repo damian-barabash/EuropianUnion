@@ -1,12 +1,19 @@
-/* Design tokens. Placeholder palette and type until the project's visual identity arrives:
-   change the values here and the whole site follows. No rounded corners anywhere by design. */
+/* Design tokens. Colours come from the TransBioNet brand sheet: navy, blue and teal.
+   Brand teal is for marks and gradients; buttons use the deeper --teal-deep under white text.
+   No rounded corners anywhere by design. */
 :root {
-  --ink: #0b0c10;
+  --ink: #141a33;
   --muted: #5a5f6d;
-  --navy: #14183a;
-  --blue: #0a3ca8;
-  --blue-dark: #082e83;
-  --sky: #e6eefc;
+  --navy: #202b57;
+  --blue: #2d51aa;
+  --blue-dark: #24418a;
+  /* Middle stop of the blue-to-navy gradients. */
+  --blue-deep: #283f85;
+  --teal: #40a8a0;
+  /* Deeper teal for buttons, so that white lettering stays readable. */
+  --teal-deep: #25817a;
+  --teal-light: #9bdad4;
+  --sky: #e7edf8;
   --grey: #f6f6f7;
   --line: #d7dae2;
   --white: #fff;

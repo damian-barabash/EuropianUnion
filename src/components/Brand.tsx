@@ -1,23 +1,10 @@
 import { site } from '../data/site'
 
-// Working project logo: a rising chain of linked nodes (research moving towards investment)
-// and the name. To be replaced if the project receives a designed logo.
+// Project logo from the brand sheet (first of the three versions). `light` is the version
+// for dark backgrounds: white lettering, the navy circle turned white.
 export function Logo({ light = false }: { light?: boolean }) {
-  return (
-    <span className={`logo${light ? ' logo--light' : ''}`}>
-      <svg className="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
-        <rect width="40" height="40" className="logo__tile" />
-        <path d="M9.5 28.5 17 18l7.5 5.5L31 11" className="logo__link" />
-        <circle cx="9.5" cy="28.5" r="3" className="logo__glyph" />
-        <circle cx="17" cy="18" r="3" className="logo__glyph" />
-        <circle cx="24.5" cy="23.5" r="3" className="logo__glyph" />
-        <circle cx="31" cy="11" r="3.6" className="logo__dot" />
-      </svg>
-      <span className="logo__word">
-        Trans<b>Bio</b>Net
-      </span>
-    </span>
-  )
+  const file = light ? 'logo-light.svg' : 'logo.svg'
+  return <img className="logo" src={`${import.meta.env.BASE_URL}brand/${file}`} alt={site.name} width={150} height={54} />
 }
 
 const STAR = (() => {

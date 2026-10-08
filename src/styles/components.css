@@ -18,7 +18,7 @@
 }
 
 .btn--primary {
-  background: var(--blue);
+  background: var(--teal-deep);
   color: var(--white);
 }
 
@@ -75,69 +75,9 @@
 
 /* ---------- Brand ---------- */
 .logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  color: var(--ink);
-}
-
-.logo__mark {
-  width: 40px;
-  height: 40px;
-}
-
-.logo__tile {
-  fill: var(--blue);
-}
-
-.logo__glyph {
-  fill: var(--white);
-}
-
-.logo__link {
-  fill: none;
-  stroke: var(--white);
-  stroke-width: 2.2;
-}
-
-.logo__dot {
-  fill: #8fb8ff;
-}
-
-.logo__word {
-  font-size: 1.5rem;
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1;
-}
-
-.logo__word b {
-  font-weight: 700;
-  color: var(--blue);
-}
-
-.logo--light {
-  color: var(--white);
-}
-
-.logo--light .logo__word b {
-  color: var(--white);
-}
-
-.logo--light .logo__tile {
-  fill: var(--white);
-}
-
-.logo--light .logo__glyph {
-  fill: var(--navy);
-}
-
-.logo--light .logo__link {
-  stroke: var(--navy);
-}
-
-.logo--light .logo__dot {
-  fill: var(--blue);
+  display: block;
+  width: auto;
+  height: 54px;
 }
 
 .eu {
@@ -368,13 +308,8 @@
     gap: 0.75rem;
   }
 
-  .logo__word {
-    font-size: 1.35rem;
-  }
-
-  .logo__mark {
-    width: 34px;
-    height: 34px;
+  .logo {
+    height: 42px;
   }
 
   .eu__flag {
@@ -470,7 +405,7 @@
   padding: 1.5rem;
   background: var(--white);
   border: 1px solid var(--line);
-  box-shadow: 0 18px 40px -18px rgb(20 24 58 / 35%);
+  box-shadow: 0 18px 40px -18px rgb(32 43 87 / 35%);
   font-size: var(--fs-small);
 }
 
@@ -758,7 +693,7 @@
 }
 
 .post:hover .post__arrow {
-  background: var(--blue);
+  background: var(--teal-deep);
   color: var(--white);
 }
 
@@ -892,7 +827,7 @@
 }
 
 .callp:hover .callp__arrow {
-  background: var(--blue);
+  background: var(--teal-deep);
   color: var(--white);
 }
 
@@ -912,7 +847,7 @@
   padding: clamp(1.75rem, 4vw, 3.5rem);
   background:
     linear-gradient(115deg, transparent 0 58%, rgb(255 255 255 / 5%) 58% 72%, transparent 72% 80%, rgb(255 255 255 / 9%) 80% 100%),
-    linear-gradient(115deg, var(--blue) 0%, #0c2f8a 45%, var(--navy) 100%);
+    linear-gradient(115deg, var(--blue) 0%, var(--blue-deep) 45%, var(--navy) 100%);
   border-color: transparent;
   color: var(--white);
 }
@@ -954,7 +889,7 @@
 .callp__bar span {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, #6fa0ff, var(--white));
+  background: linear-gradient(90deg, var(--teal), var(--white));
 }
 
 .callp--closed {
@@ -1117,7 +1052,7 @@
   padding-inline: 1.75rem;
   background:
     linear-gradient(115deg, transparent 0 62%, rgb(255 255 255 / 6%) 62% 80%, rgb(255 255 255 / 10%) 80% 100%),
-    linear-gradient(115deg, var(--blue) 0%, #0c2f8a 45%, var(--navy) 100%);
+    linear-gradient(115deg, var(--blue) 0%, var(--blue-deep) 45%, var(--navy) 100%);
   color: var(--white);
   font-size: 1.125rem;
   font-weight: 600;
@@ -1252,7 +1187,7 @@
 }
 
 .event:hover .event__arrow {
-  background: var(--blue);
+  background: var(--teal-deep);
   color: var(--white);
 }
 
@@ -1264,11 +1199,11 @@
 }
 
 .section--dark .event__date {
-  background: linear-gradient(150deg, #2f6bff 0%, var(--blue) 100%);
+  background: linear-gradient(150deg, var(--teal) 0%, var(--blue) 100%);
 }
 
 .section--dark .event__format {
-  color: #9dbcff;
+  color: var(--teal-light);
 }
 
 .section--dark .facts-inline {

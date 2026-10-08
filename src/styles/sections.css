@@ -10,7 +10,7 @@
 .section--dark {
   background:
     linear-gradient(115deg, transparent 0 22%, rgb(255 255 255 / 3%) 22% 34%, transparent 34% 100%),
-    linear-gradient(125deg, var(--navy) 0%, #121a4a 55%, #0b2c86 100%);
+    linear-gradient(125deg, var(--navy) 0%, #24316a 55%, var(--blue) 100%);
   color: var(--white);
 }
 
@@ -94,7 +94,7 @@
   inset: 27% 0 0;
   background:
     linear-gradient(115deg, transparent 0 46%, rgb(255 255 255 / 5%) 46% 64%, transparent 64% 76%, rgb(255 255 255 / 9%) 76% 100%),
-    linear-gradient(115deg, var(--blue) 0%, #0c2f8a 45%, var(--navy) 100%);
+    linear-gradient(115deg, var(--blue) 0%, var(--blue-deep) 45%, var(--navy) 100%);
   animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
@@ -157,7 +157,7 @@
   gap: 0.5rem;
   padding-top: 1.5rem;
   border-top: 2px solid;
-  border-image: linear-gradient(90deg, var(--blue), var(--sky)) 1;
+  border-image: linear-gradient(90deg, var(--blue), var(--teal) 60%, var(--sky)) 1;
 }
 
 .facts dd {
@@ -210,7 +210,7 @@
 }
 
 .bleed__panel--tint {
-  background: linear-gradient(135deg, #fff 0%, var(--sky) 55%, #f7f9fe 100%);
+  background: linear-gradient(135deg, #fff 0%, var(--sky) 55%, #f8fafd 100%);
 }
 
 .bleed__panel > div {
@@ -280,7 +280,7 @@
   left: 0;
   width: 56px;
   height: 6px;
-  background: linear-gradient(90deg, var(--blue), #2f6bff);
+  background: linear-gradient(90deg, var(--blue), var(--teal));
 }
 
 .columns li::after {
@@ -290,7 +290,7 @@
   bottom: -40px;
   width: 120px;
   height: 120px;
-  background: linear-gradient(135deg, transparent 50%, rgb(10 60 168 / 7%) 50%);
+  background: linear-gradient(135deg, transparent 50%, rgb(45 81 170 / 7%) 50%);
 }
 
 .columns h3 {
@@ -388,7 +388,7 @@
 .cta {
   background:
     linear-gradient(115deg, transparent 0 62%, rgb(255 255 255 / 6%) 62% 76%, transparent 76% 84%, rgb(255 255 255 / 10%) 84% 100%),
-    linear-gradient(115deg, var(--blue) 0%, #0c2f8a 55%, var(--navy) 100%);
+    linear-gradient(115deg, var(--blue) 0%, var(--blue-deep) 55%, var(--navy) 100%);
   color: var(--white);
 }
 
@@ -417,7 +417,7 @@
 .pagehero {
   padding-block: clamp(2rem, 4vw, 3.5rem) clamp(3rem, 6vw, 5rem);
   background:
-    linear-gradient(115deg, transparent 0 64%, rgb(10 60 168 / 5%) 64% 78%, transparent 78% 86%, rgb(10 60 168 / 9%) 86% 100%),
+    linear-gradient(115deg, transparent 0 64%, rgb(45 81 170 / 5%) 64% 78%, transparent 78% 86%, rgb(45 81 170 / 9%) 86% 100%),
     var(--grey);
 }
 
@@ -576,7 +576,7 @@
   width: 56px;
   height: 56px;
   margin-bottom: 0.75rem;
-  background: linear-gradient(150deg, #2f6bff 0%, var(--blue) 55%, var(--navy) 130%);
+  background: linear-gradient(150deg, var(--teal) 0%, var(--blue) 60%, var(--navy) 130%);
   color: var(--white);
   font-size: 1.75rem;
   font-weight: 300;
@@ -664,7 +664,7 @@
 }
 
 .video__play:hover {
-  background: var(--blue);
+  background: var(--teal-deep);
   color: var(--white);
 }
 
