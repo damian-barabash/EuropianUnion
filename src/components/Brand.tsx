@@ -1,10 +1,52 @@
+import { useRef } from 'react'
 import { site } from '../data/site'
+import { logoSrc, logoVariants, setLogo, useLogo } from '../lib/logoChoice'
 
-// Project logo from the brand sheet (first of the three versions). `light` is the version
-// for dark backgrounds: white lettering, the navy circle turned white.
+// Project logo from the brand sheet. Which of the three versions is shown is chosen in the footer
+// (see LogoSwitcher). `light` is the version for dark backgrounds: white instead of navy.
 export function Logo({ light = false }: { light?: boolean }) {
-  const file = light ? 'logo-light.svg' : 'logo.svg'
-  return <img className="logo" src={`${import.meta.env.BASE_URL}brand/${file}`} alt={site.name} width={150} height={54} />
+  const id = useLogo()
+  const v = logoVariants.find((x) => x.id === id) ?? logoVariants[0]
+  return <img className={`logo logo--v${v.id}`} src={logoSrc(v.id, light)} alt={site.name} width={Math.round(v.height * v.ratio)} height={v.height} />
+}
+
+// Small link in the footer that opens a window with the three logo versions.
+export function LogoSwitcher() {
+  const id = useLogo()
+  const ref = useRef<HTMLDialogElement>(null)
+  return (
+    <>
+      <button className="logopick__open" onClick={() => ref.current?.showModal()}>
+        Zmień logo
+      </button>
+      <dialog className="logopick" ref={ref} aria-labelledby="logopick-title" onClick={(e) => e.target === ref.current && ref.current?.close()}>
+        <div className="logopick__in">
+          <h2 id="logopick-title">Wybierz logo</h2>
+          <p>Wybrana wersja pokaże się na całej stronie. Wybór zapisuje się tylko w tej przeglądarce.</p>
+          <ul>
+            {logoVariants.map((v) => (
+              <li key={v.id}>
+                <button
+                  className={`logopick__item${v.id === id ? ' is-active' : ''}`}
+                  aria-pressed={v.id === id}
+                  onClick={() => {
+                    setLogo(v.id)
+                    ref.current?.close()
+                  }}
+                >
+                  <img src={logoSrc(v.id)} alt={`Logo ${site.name}, ${v.label.toLowerCase()}`} />
+                  <span>{v.id === id ? `${v.label} · wybrana` : v.label}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          <button className="btn btn--outline btn--sm" onClick={() => ref.current?.close()}>
+            Zamknij
+          </button>
+        </div>
+      </dialog>
+    </>
+  )
 }
 
 const STAR = (() => {
