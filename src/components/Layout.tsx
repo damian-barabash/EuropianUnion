@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { footerMenu, legalMenu, mainMenu, site, visibleMenu, type MenuItem } from '../data/site'
 import { useReveal } from '../lib/useReveal'
-import { EuEmblem, Logo, LogoSwitcher } from './Brand'
+import { EuEmblem, Logo } from './Brand'
 import { Icon } from './Icon'
 
 function Announcement() {
@@ -110,7 +110,6 @@ function Footer() {
         <span>
           Copyright {new Date().getFullYear()} | {site.name}
         </span>
-        <LogoSwitcher />
       </div>
     </footer>
   )
