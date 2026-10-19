@@ -17,6 +17,9 @@
   --grey: #f6f6f7;
   --line: #d7dae2;
   --white: #fff;
+  /* Soft background circles, colours taken from the partner slide template. */
+  --orb-teal: 31 160 160;
+  --orb-blue: 26 74 166;
 
   --font: 'Onest Variable', 'Onest', system-ui, sans-serif;
 

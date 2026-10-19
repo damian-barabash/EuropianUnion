@@ -214,6 +214,8 @@
   top: 100%;
   left: -1rem;
   min-width: 190px;
+  width: max-content;
+  max-width: 360px;
   padding: 0.5rem;
   background: var(--white);
   border: 1px solid var(--line);

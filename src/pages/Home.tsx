@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero orbs orbs--a">
         <div className="hero__text">
           <h1>{intro.hero.title}</h1>
           <p>{intro.hero.text}</p>
@@ -67,7 +67,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section orbs orbs--b">
         <div className="container">
           <SectionHead title={intro.pillarsTitle} />
           <ul className="columns">
@@ -83,7 +83,7 @@ export default function Home() {
 
       <section className="bleed bleed--flip">
         <div className="bleed__media">
-          <img src={img('lab-computers.webp')} alt="Two researchers working at computers in a laboratory" loading="lazy" width={900} height={700} />
+          <img src={img('team-whiteboard.webp')} alt="A team discussing ideas while a colleague writes on a whiteboard" loading="lazy" width={900} height={700} />
         </div>
         <div className="bleed__panel bleed__panel--tint">
           <div data-reveal>
@@ -109,7 +109,7 @@ export default function Home() {
         </section>
       )}
 
-      <section className="section">
+      <section className="section orbs orbs--c">
         <div className="container">
           <SectionHead title="News" />
           <div className="grid grid--3">
@@ -145,7 +145,7 @@ export default function Home() {
         </section>
       )}
 
-      <section className="section">
+      <section className="section orbs orbs--b">
         <div className="container">
           <SectionHead title="Partners" text={`${partners.length} organisations from ${countries} countries work together in the consortium.`} />
           <ul className="logos" data-reveal>

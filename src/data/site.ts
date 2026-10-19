@@ -1,5 +1,7 @@
 // Site settings and menus. In WordPress this becomes Customizer / options page + nav menus.
 
+import { partners } from './content'
+
 export const site = {
   name: 'TransBioNet',
   tagline: 'Bringing biomedical discoveries closer to investment',
@@ -35,7 +37,12 @@ export type MenuItem = { label: string; to: string; href?: string; children?: Me
 export const mainMenu: MenuItem[] = [
   { label: 'About', to: '/about' },
   { label: 'Open Calls', to: '/open-calls' },
-  { label: 'Partners', to: '/partners' },
+  {
+    // Partner names as a drop-down (request from a partner, October 2026). Built from the partner list.
+    label: 'Partners',
+    to: '/partners',
+    children: [{ label: 'All partners', to: '/partners' }, ...partners.map((p) => ({ label: p.name, to: `/partners/${p.slug}` }))],
+  },
   {
     label: 'News & Events',
     to: '/news',

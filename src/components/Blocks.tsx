@@ -22,7 +22,7 @@ export function Breadcrumbs({ items }: { items: { label: string; to?: string }[]
 
 export function PageHero({ title, lead, crumbs, children }: { title: string; lead?: string; crumbs: { label: string; to?: string }[]; children?: ReactNode }) {
   return (
-    <section className="pagehero">
+    <section className="pagehero orbs orbs--a">
       <div className="container pagehero__in">
         <Breadcrumbs items={crumbs} />
         <h1>{title}</h1>
@@ -169,7 +169,7 @@ export function ContactForm() {
 // "Let's talk" block: text on the left, form on the right. Closes the home page.
 export function ContactBlock() {
   return (
-    <section className="talk">
+    <section className="talk orbs orbs--c">
       <div className="container talk__in">
         <div className="talk__text" data-reveal>
           <h2>{intro.talk.title}</h2>
