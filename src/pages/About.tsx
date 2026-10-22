@@ -6,6 +6,10 @@ import { team, timeline, workPackages } from '../data/content'
 import { facts, intro, lorem, pillars, site } from '../data/site'
 import { img } from '../lib/format'
 
+// Hidden until the client sends the content (22.10.2026): timeline, work packages, video, people
+// and funding. `true` brings them back.
+const SHOW_LATER = false
+
 function Team() {
   const [i, setI] = useState(0)
   const p = team[i]
@@ -35,15 +39,16 @@ function Team() {
 export default function About() {
   return (
     <>
-      <PageHero title="About the project" lead={lorem.short} crumbs={[{ label: 'About' }]} />
+      <PageHero title="About the project" lead={intro.about.lead} crumbs={[{ label: 'About' }]} />
 
       <section className="section">
         <div className="container media">
           <img className="media__img" src={img('lab-team-bench.webp')} alt="Researchers working together at a laboratory bench" width={700} height={500} loading="lazy" data-reveal />
           <div data-reveal>
-            <h2>We are {site.name}</h2>
-            <p>{lorem.p1}</p>
-            <p>{lorem.p2}</p>
+            <h2>{intro.about.title}</h2>
+            {intro.about.text.map((t) => (
+              <p key={t}>{t}</p>
+            ))}
           </div>
         </div>
       </section>
@@ -61,79 +66,83 @@ export default function About() {
           </ul>
         </div>
       </section>
+      {SHOW_LATER && (
+        <>
 
-      <section className="section">
-        <div className="container">
-          <SectionHead title="Project timeline" />
-          <ol className="timeline">
-            {timeline.map((t) => (
-              <li key={t.period} data-reveal>
-                <span className="timeline__period">{t.period}</span>
-                <h3>{t.title}</h3>
-                <p>{t.text}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+          <section className="section">
+            <div className="container">
+              <SectionHead title="Project timeline" />
+              <ol className="timeline">
+                {timeline.map((t) => (
+                  <li key={t.period} data-reveal>
+                    <span className="timeline__period">{t.period}</span>
+                    <h3>{t.title}</h3>
+                    <p>{t.text}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
 
-      <section className="section section--grey">
-        <div className="container media media--flip">
-          <div data-reveal>
-            <h2>How the work is organised</h2>
-            <p>{lorem.p3}</p>
-            <ul className="wp">
-              {workPackages.map((w) => (
-                <li key={w.code}>
-                  <span>{w.code}</span>
-                  {w.title}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <img className="media__img" src={img('lab-team-tablet.webp')} alt="Three researchers discussing results on a tablet" width={700} height={500} loading="lazy" data-reveal />
-        </div>
-      </section>
+          <section className="section section--grey">
+            <div className="container media media--flip">
+              <div data-reveal>
+                <h2>How the work is organised</h2>
+                <p>{lorem.p3}</p>
+                <ul className="wp">
+                  {workPackages.map((w) => (
+                    <li key={w.code}>
+                      <span>{w.code}</span>
+                      {w.title}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <img className="media__img" src={img('lab-team-tablet.webp')} alt="Three researchers discussing results on a tablet" width={700} height={500} loading="lazy" data-reveal />
+            </div>
+          </section>
 
-      <section className="section">
-        <div className="container">
-          <SectionHead title="Introduction video" />
-          <div className="video" data-reveal>
-            <img src={img('conference-audience.webp')} alt="" loading="lazy" />
-            <button className="video__play" aria-label="Play the introduction video (placeholder)">
-              <Icon name="play" size={34} />
-            </button>
-          </div>
-        </div>
-      </section>
+          <section className="section">
+            <div className="container">
+              <SectionHead title="Introduction video" />
+              <div className="video" data-reveal>
+                <img src={img('conference-audience.webp')} alt="" loading="lazy" />
+                <button className="video__play" aria-label="Play the introduction video (placeholder)">
+                  <Icon name="play" size={34} />
+                </button>
+              </div>
+            </div>
+          </section>
 
-      <section className="section section--grey">
-        <div className="container">
-          <SectionHead title="People behind the project" />
-          <Team />
-        </div>
-      </section>
+          <section className="section section--grey">
+            <div className="container">
+              <SectionHead title="People behind the project" />
+              <Team />
+            </div>
+          </section>
 
-      <section className="section">
-        <div className="container funding" data-reveal>
-          <EuEmblem stacked />
-          <div>
-            <h2>Funding</h2>
-            <p>
-              {site.name} is {site.euLabel.toLowerCase()} the European Union. {lorem.p2}
-            </p>
-            <dl className="facts facts--plain">
-              {facts.map((f) => (
-                <div key={f.label}>
-                  <dt>{f.label}</dt>
-                  <dd>{f.value}</dd>
-                </div>
-              ))}
-            </dl>
-            <p className="note">{site.grant}</p>
-          </div>
-        </div>
-      </section>
+          <section className="section">
+            <div className="container funding" data-reveal>
+              <EuEmblem stacked />
+              <div>
+                <h2>Funding</h2>
+                <p>
+                  {site.name} is {site.euLabel.toLowerCase()} the European Union. {lorem.p2}
+                </p>
+                <dl className="facts facts--plain">
+                  {facts.map((f) => (
+                    <div key={f.label}>
+                      <dt>{f.label}</dt>
+                      <dd>{f.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <p className="note">{site.grant}</p>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
 
       <CtaBand />
     </>

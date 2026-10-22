@@ -81,20 +81,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bleed bleed--flip">
-        <div className="bleed__media">
-          <img src={img('team-whiteboard.webp')} alt="A team discussing ideas while a colleague writes on a whiteboard" loading="lazy" width={900} height={700} />
-        </div>
-        <div className="bleed__panel bleed__panel--tint">
-          <div data-reveal>
-            <h2>Digital Platform</h2>
-            <p>{lorem.short}</p>
-            <Link to="/digital-platform" className="btn btn--outline">
-              Explore the platform
-            </Link>
+      {site.showPlatform && (
+        <section className="bleed bleed--flip">
+          <div className="bleed__media">
+            <img src={img('team-whiteboard.webp')} alt="A team discussing ideas while a colleague writes on a whiteboard" loading="lazy" width={900} height={700} />
           </div>
-        </div>
-      </section>
+          <div className="bleed__panel bleed__panel--tint">
+            <div data-reveal>
+              <h2>Digital Platform</h2>
+              <p>{lorem.short}</p>
+              <Link to="/digital-platform" className="btn btn--outline">
+                Explore the platform
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {site.showOpenCalls && (
         <section className="section section--grey">
@@ -126,7 +128,7 @@ export default function Home() {
       </section>
 
       {/* The whole block disappears when there are no upcoming events. */}
-      {upcoming.length > 0 && (
+      {site.showEvents && upcoming.length > 0 && (
         <section className="section section--dark">
           <div className="container darkgrid">
             <div className="darkgrid__head" data-reveal>

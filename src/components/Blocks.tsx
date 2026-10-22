@@ -86,6 +86,10 @@ export function Filter<T extends string>({ label, options, value, onChange }: { 
   )
 }
 
+const topics = ['General enquiry', 'Open calls', 'Collaboration', 'Training and community', 'Digital platform and tools', 'Media enquiry'].filter(
+  (t) => site.showPlatform || t !== 'Digital platform and tools',
+)
+
 // Test mode: nothing is sent yet. On WordPress this form is replaced by the theme's form handler.
 export function ContactForm() {
   const [sent, setSent] = useState(false)
@@ -135,7 +139,7 @@ export function ContactForm() {
         <label>
           Topic
           <select name="topic" defaultValue="General enquiry">
-            {['General enquiry', 'Open calls', 'Collaboration', 'Training and community', 'Digital platform and tools', 'Media enquiry'].map((o) => (
+            {topics.map((o) => (
               <option key={o}>{o}</option>
             ))}
           </select>
@@ -189,7 +193,7 @@ export function CtaBand() {
       <div className="container cta__in" data-reveal>
         <div>
           <h2>Have a question about the project?</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+          <p>Write to us about the project, future open calls or opportunities to collaborate.</p>
         </div>
         <div className="cta__actions">
           <Link to="/contact" className="btn btn--light">

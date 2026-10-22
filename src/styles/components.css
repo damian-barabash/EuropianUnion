@@ -104,8 +104,9 @@
   color: var(--white);
 }
 
+/* EU emblem rules: on a coloured background the flag gets a white border 1/25 of its height. */
 .eu--light .eu__flag {
-  outline: 1px solid rgb(255 255 255 / 60%);
+  outline: calc(36px / 25) solid var(--white);
 }
 
 .eu--stacked .eu__flag {
@@ -490,6 +491,15 @@
   border: 1px solid var(--line);
   color: var(--muted);
   text-align: center;
+}
+
+/* Message in place of a list that has no items yet (Resources). */
+.notice {
+  max-width: 760px;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  border-left: 3px solid var(--teal);
+  font-size: 1.15rem;
+  line-height: 1.6;
 }
 
 .section--dark .empty {

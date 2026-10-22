@@ -1,7 +1,8 @@
 // Placeholder content shaped like the future WordPress content types:
 // posts (news), events, open calls, partners, resources (documents / materials / videos), team.
 
-export type Post = { slug: string; title: string; date: string; category: 'News' | 'Press release' | 'Article'; image: string; excerpt: string }
+// `body` holds the article paragraphs; posts without it show placeholder text.
+export type Post = { slug: string; title: string; date: string; category: 'News' | 'Press release' | 'Article'; image: string; excerpt: string; body?: string[] }
 export type EventItem = { slug: string; title: string; date: string; endDate?: string; time: string; place: string; format: 'On-site' | 'Online' | 'Hybrid'; image: string; excerpt: string; registerUrl?: string; openCall?: boolean }
 export type CallStatus = 'open' | 'upcoming' | 'closed'
 export type OpenCall = {
@@ -19,6 +20,15 @@ export type Person = { name: string; role: string; org: string; image: string; q
 const ex = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 
 export const posts: Post[] = [
+  {
+    // Image: the project logo on white. Temporary file made from logo.svg until the client's designer sends the final one.
+    slug: 'transbionet-launched', title: 'TransBioNet launched to bring biomedical research closer to investment', date: '2026-10-22', category: 'News', image: 'news-transbionet-logo.webp',
+    excerpt: 'A new Horizon Europe project brings together seven partners from six countries to build the first pan-European network of knowledge valorisation intermediaries for drug discovery.',
+    body: [
+      'TransBioNet, a new initiative funded by the European Union’s Horizon Europe programme, has been launched to help promising biomedical research across Europe progress towards investment readiness. The nearly €2 million project brings together seven partners from six countries to establish the first pan-European network of knowledge valorisation intermediaries fully dedicated to drug discovery and biomedical innovation.',
+      'Coordinated by Associação AccelBio in Portugal, the project will address the translation gap through shared assessment tools, training, cross-border collaboration and two Open Calls supporting early-stage drug discovery projects.',
+    ],
+  },
   { slug: 'lorem-ipsum-dolor-sit-amet', title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', date: '2026-10-02', category: 'News', image: 'lab-pipette.webp', excerpt: ex },
   { slug: 'sed-do-eiusmod-tempor', title: 'Sed do eiusmod tempor incididunt ut labore et dolore', date: '2026-09-18', category: 'Press release', image: 'conference-audience.webp', excerpt: ex },
   { slug: 'ut-enim-ad-minim-veniam', title: 'Ut enim ad minim veniam, quis nostrud exercitation', date: '2026-09-04', category: 'News', image: 'microscope.webp', excerpt: ex },
@@ -74,7 +84,7 @@ export const partners: Partner[] = [
     roleText: 'Leads the European Infrastructure Atlas, mapping specialist research facilities and services for drug discovery.',
     logo: 'biocant-park.webp', logoScale: 1.05, website: 'https://www.biocant.pt/', linkedin: 'https://www.linkedin.com/company/biocant-park/',
     description: [
-      'Biocant Park is a Science and Technology Park specialized in biotechnology, located in Cantanhede. It promotes scientific and technological innovation by supporting high-potential companies and projects in the life sciences sector. The park provides state-of-the-art dedicated infrastructures, advanced laboratories, and specialized technological platforms designed to support R&D and innovation in biotechnology. Through scientific support, consultancy, technology transfer, and access to funding, Biocant Park connects academia, industry, and entrepreneurs to drive bio-innovation.',
+      'Biocant Park will lead the implementation of the European Infrastructure Atlas, which will map specialized research facilities and services supporting drug discovery. It will also co-lead communication and dissemination activities, engaging both key stakeholders and the wider public. In addition, Biocant Park will contribute to the development of the Valorisation Toolkit, co-design and deliver modules for the Digital Training Academy, and support the implementation of open calls.',
     ],
   },
   {
@@ -93,15 +103,6 @@ export const partners: Partner[] = [
     ],
   },
   {
-    slug: 'eit-health-innostars', name: 'EIT Health InnoStars', legalName: 'EIT Health InnoStars e.V.', country: 'Hungary', type: 'Life sciences cluster', role: 'Partner',
-    roleText: 'Leads communication, dissemination, open call administration and development of the TransBioNet Charter.',
-    logo: 'innostars.webp', website: 'https://www.innostars.org', linkedin: 'https://www.linkedin.com/company/innostars/',
-    description: [
-      'InnoStars is an independent non-profit association focused on health innovation in Europe.',
-      'It brings together an ecosystem of partners and innovators across Europe, with a focus on regions with moderate innovation capacity. InnoStars has established a network of partner institutions and supported numerous start-ups. Through various innovation programmes and projects, it has contributed to the development and launch of products, services, and jobs across the healthcare value chain. Its mission is to strengthen regional innovation ecosystems, foster entrepreneurship and collaboration, and help bridge healthcare innovation gaps, enabling people to live longer and healthier lives.',
-    ],
-  },
-  {
     slug: 'hlsc', name: 'Health & Life Sciences Cluster (HLSC)', legalName: 'Biotehnologichen i Zdraven Klaster', country: 'Bulgaria', type: 'Life sciences cluster', role: 'Partner',
     roleText: 'Co-leads policy and ecosystem mapping and stakeholder consultations, contributing to training and shared tools.',
     logo: 'hlsc.webp', logoScale: 1.3, website: 'https://www.biocluster.bg/', linkedin: 'https://www.linkedin.com/company/lifesciencesbulgaria/',
@@ -109,6 +110,14 @@ export const partners: Partner[] = [
       'HLSC (Health & Life Sciences Cluster, Bulgaria) is Bulgaria’s national life-sciences cluster, bringing together universities, research centres, hospitals, startups, technology-transfer organisations, SMEs and established companies across biotechnology, health, personalised medicine and digital health. HLSC connects science, industry and policy, helping innovators access funding, develop cross-border partnerships, validate solutions and engage with European and international networks.',
       'The cluster has practical experience in building inclusive innovation ecosystems through European projects including TransBioNet, OHAMR, C3BG, INNAXE, PRECISEU, VELES, ENACT and BIO-RED. Its work spans biotechnology, health-data ecosystems, personalised medicine, capacity building, technology transfer and the strengthening of innovation in Widening countries.',
       'Within TransBioNet, HLSC co-leads inclusive policy analysis and contributes to ensuring that Widening-country ecosystems are represented in project activities and recommendations. It also supports training, open calls, stakeholder engagement, communication and dissemination. Through its established links with public authorities, academia, healthcare providers and industry, HLSC serves as a first point of contact for organisations in Bulgaria and South-East Europe seeking collaboration, specialised support and pathways to transform research into market-ready biomedical innovation.',
+    ],
+  },
+  {
+    slug: 'innostars', name: 'InnoStars', legalName: 'InnoStars e.V.', country: 'Germany', type: 'Life sciences cluster', role: 'Partner',
+    roleText: 'Leads communication, dissemination, open calls launch and administration, and the development and adoption of the TransBioNet Charter.',
+    logo: 'innostars.webp', website: 'https://www.innostars.org', linkedin: 'https://www.linkedin.com/company/innostars/',
+    description: [
+      'InnoStars brings together a diverse ecosystem of partners and innovators across Europe, focusing on regions with moderate innovation capacity. Through its network of partner institutions and various innovation programmes supporting start-ups and other ecosystem payers, it has helped drive the development and launch of products, services, and job opportunities across the healthcare value chain. Its mission is to strengthen regional innovation ecosystems, promote entrepreneurship and collaboration, and bridge gaps in healthcare innovation, ultimately enabling people to live longer, healthier lives.',
     ],
   },
   {

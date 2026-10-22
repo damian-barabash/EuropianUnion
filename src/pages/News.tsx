@@ -36,6 +36,25 @@ export function NewsPage() {
   )
 }
 
+// Sample article text for posts that have no `body` yet.
+function PlaceholderBody() {
+  return (
+    <>
+      <p>{lorem.p1}</p>
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <p>{lorem.p2}</p>
+      <blockquote>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</blockquote>
+      <p>{lorem.p3}</p>
+      <ul>
+        <li>Nemo enim ipsam voluptatem quia voluptas sit aspernatur.</li>
+        <li>Neque porro quisquam est, qui dolorem ipsum quia dolor.</li>
+        <li>Quis autem vel eum iure reprehenderit qui in ea voluptate.</li>
+      </ul>
+      <p>{lorem.p1}</p>
+    </>
+  )
+}
+
 export function PostPage() {
   const { slug } = useParams()
   const post = posts.find((p) => p.slug === slug)
@@ -56,17 +75,7 @@ export function PostPage() {
           <img className="article__img" src={img(post.image)} alt="" width={1100} height={600} />
           <div className="prose">
             <p className="prose__lead">{post.excerpt}</p>
-            <p>{lorem.p1}</p>
-            <h2>Lorem ipsum dolor sit amet</h2>
-            <p>{lorem.p2}</p>
-            <blockquote>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</blockquote>
-            <p>{lorem.p3}</p>
-            <ul>
-              <li>Nemo enim ipsam voluptatem quia voluptas sit aspernatur.</li>
-              <li>Neque porro quisquam est, qui dolorem ipsum quia dolor.</li>
-              <li>Quis autem vel eum iure reprehenderit qui in ea voluptate.</li>
-            </ul>
-            <p>{lorem.p1}</p>
+            {post.body ? post.body.map((t) => <p key={t}>{t}</p>) : <PlaceholderBody />}
           </div>
           <Link className="btn btn--outline btn--sm" to="/news">
             Back to all news

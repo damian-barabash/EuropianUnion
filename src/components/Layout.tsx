@@ -7,7 +7,7 @@ import { Icon } from './Icon'
 
 function Announcement() {
   const a = site.announcement
-  if (!a.text || !site.showOpenCalls) return null
+  if (!a.show || !a.text || !site.showOpenCalls) return null
   return (
     <div className="announce">
       <div className="container announce__in">
