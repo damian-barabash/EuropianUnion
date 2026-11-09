@@ -1,0 +1,12 @@
+/*
+Theme Name: TransBioNet
+Theme URI: https://transbionet.eu
+Author: Dmytrii Flow
+Description: Theme of the TransBioNet project website. Pages are built from ready-made sections (Pages → edit → Sections). News, events, Open Calls, partners and resources have their own menus. Requires ACF PRO (or Secure Custom Fields).
+Version: 1.0.0
+Requires at least: 6.5
+Requires PHP: 8.1
+Text Domain: transbionet
+*/
+
+/* Styles live in assets/css. This file only names the theme. */

@@ -1,0 +1,7 @@
+/* Block editor: the same font and colours as the site, so the team sees roughly the final look. */
+@font-face{font-family:'Onest Variable';font-style:normal;font-display:swap;font-weight:100 900;src:url(../fonts/onest-latin-wght-normal.woff2) format('woff2-variations')}
+@font-face{font-family:'Onest Variable';font-style:normal;font-display:swap;font-weight:100 900;src:url(../fonts/onest-latin-ext-wght-normal.woff2) format('woff2-variations');unicode-range:U+0100-02BA,U+1E00-1EFF}
+body{font-family:'Onest Variable',system-ui,sans-serif;color:#141A33;font-size:17px;line-height:1.6}
+h1,h2,h3{font-weight:400;line-height:1.2}
+a{color:#2D51AA}
+.wp-block-button__link,.wp-block-file__button{border-radius:0!important;background:#25817A}

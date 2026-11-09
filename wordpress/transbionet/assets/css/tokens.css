@@ -1,0 +1,41 @@
+/* Design tokens. Colours come from the TransBioNet brand sheet: navy, blue and teal.
+   Brand teal is for marks and gradients; buttons use the deeper --teal-deep under white text.
+   No rounded corners anywhere by design. */
+:root {
+  --ink: #141a33;
+  --muted: #5a5f6d;
+  --navy: #202b57;
+  --blue: #2d51aa;
+  --blue-dark: #24418a;
+  /* Middle stop of the blue-to-navy gradients. */
+  --blue-deep: #283f85;
+  --teal: #40a8a0;
+  /* Deeper teal for buttons, so that white lettering stays readable. */
+  --teal-deep: #25817a;
+  --teal-light: #9bdad4;
+  --sky: #e7edf8;
+  --grey: #f6f6f7;
+  --line: #d7dae2;
+  --white: #fff;
+  /* Soft background circles, colours taken from the partner slide template. */
+  --orb-teal: 31 160 160;
+  --orb-blue: 26 74 166;
+
+  --font: 'Onest Variable', 'Onest', system-ui, sans-serif;
+
+  --fs-h1: clamp(2.25rem, 1.45rem + 2.9vw, 3.5rem);
+  --fs-h2: clamp(1.9rem, 1.35rem + 2vw, 2.9rem);
+  --fs-h3: 1.3125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.9375rem;
+
+  --container: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section: clamp(4rem, 8.5vw, 7.5rem);
+  /* Left/right offset that lines full-bleed blocks up with the container. */
+  --edge: max(var(--gutter), calc((100vw - var(--container)) / 2));
+
+  --z-header: 30;
+  --z-nav: 40;
+  --z-cookie: 50;
+}
