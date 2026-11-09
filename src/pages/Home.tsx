@@ -34,7 +34,7 @@ export default function Home() {
           </div>
         ) : (
           <div className="hero__media">
-            <img src={img('hero-lab.webp')} alt="Three researchers in a laboratory discussing a molecular model on a screen" width={1536} height={1024} fetchPriority="high" />
+            <img src={img('hero-main.webp')} alt="Three researchers in a laboratory discussing a molecular model on a screen" width={2560} height={1600} fetchPriority="high" />
           </div>
         )}
       </section>
@@ -54,7 +54,7 @@ export default function Home() {
 
       <section className="bleed">
         <div className="bleed__media">
-          <img src={img('lab-team-bench.webp')} alt="Researchers working together at a laboratory bench" loading="lazy" width={900} height={700} />
+          <img src={img('edge-support.webp')} alt="Three researchers discussing a sample at a laboratory microscope" loading="lazy" width={2560} height={1600} />
         </div>
         <div className="bleed__panel bleed__panel--tint">
           <div data-reveal>
@@ -84,7 +84,7 @@ export default function Home() {
       {site.showPlatform && (
         <section className="bleed bleed--flip">
           <div className="bleed__media">
-            <img src={img('team-whiteboard.webp')} alt="A team discussing ideas while a colleague writes on a whiteboard" loading="lazy" width={900} height={700} />
+            <img src={img('edge-platform.webp')} alt="A researcher at a microscope next to a screen with DNA analysis software" loading="lazy" width={2560} height={1600} />
           </div>
           <div className="bleed__panel bleed__panel--tint">
             <div data-reveal>
