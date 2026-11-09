@@ -96,7 +96,7 @@
     box.classList.add('is-playing')
   })
 
-  /* Cookies: Google Tag Manager only after "Accept all" */
+  /* Cookies: Consent Mode v2. GTM is already loaded with storage denied; the choice updates it. */
   const KEY = 'cookie-consent'
   const banner = document.getElementById('cookie')
   const read = () => {
@@ -106,34 +106,27 @@
       return null
     }
   }
-  const loadGtm = () => {
-    const id = banner && banner.dataset.gtm
-    if (!id || window.tbnGtm) return
-    window.tbnGtm = true
-    window.dataLayer = window.dataLayer || []
-    window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' })
-    const s = document.createElement('script')
-    s.async = true
-    s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent(id)
-    document.head.appendChild(s)
+  const consent = (granted) => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', { analytics_storage: granted ? 'granted' : 'denied' })
+    }
   }
   if (banner) {
-    const choice = read()
-    if (choice === 'all') loadGtm()
-    if (!choice) banner.hidden = false
+    if (!read()) banner.hidden = false
     banner.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-consent]')
       if (!btn) return
       const value = btn.dataset.consent
+      const before = read()
       try {
         localStorage.setItem(KEY, value)
       } catch {
         /* storage blocked: the banner comes back on the next visit */
       }
       banner.hidden = true
-      if (value === 'all') loadGtm()
-      // Analytics was running and the visitor withdrew consent: reload so it stops.
-      else if (window.tbnGtm) location.reload()
+      consent(value === 'all')
+      // Consent withdrawn after it was given: reload so no tag keeps running with the old setting.
+      if (before === 'all' && value !== 'all') location.reload()
     })
     $$('[data-cookie-settings]').forEach((b) =>
       b.addEventListener('click', () => {
